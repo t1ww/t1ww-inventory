@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "plans",
   "parent": {
-    "name": "Notes",
-    "path": "folders/Notes.yy",
+    "name": "outdated",
+    "path": "folders/Notes/outdated.yy",
   },
 }

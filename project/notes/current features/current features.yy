@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "current features",
   "parent": {
-    "name": "Notes",
-    "path": "folders/Notes.yy",
+    "name": "outdated",
+    "path": "folders/Notes/outdated.yy",
   },
 }

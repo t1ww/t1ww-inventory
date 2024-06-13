@@ -1,3 +1,10 @@
+
+
+			??? ATTENTION IM WORKING ON VERSION 2 IT'S FOR THE READABILITY ???
+									see devlog v2
+
+
+
 // 3/1/2023 : just started the project (planning)
 // 16/4/2023 : most systems are done, creating inv, adding items, 
 	mouse interaction ( leftclick, rightclick + shift), drawing items on inventory and mouse.
@@ -54,10 +61,18 @@ todo > --- still the same from 16/4/2023
 	fixed stacking
 	fixed type limit
 	stock in market now reduced when bought
-	stock doesnt come back by selling the item
+	stock doesnt come back by selling the item	
 	
 // 08 / 02 / 2024 : 2:21pm
 	something is wrong with inventory after i load it
 	same items sometimes swaps instead of stacking
 	and the items doesnt get removed after using all of it from the stack and gets through -1
 	it seems like the item index is wrong, will have to recheck
+	
+// 25 / 06 / 2024 : idk man, very late i forgot to write dev log
+doesnt matter tho i'm making an overhaul
+	- fixed the save and load
+	
+	
+				??? ATTENTION IM WORKING ON VERSION 2 IT'S FOR THE READABILITY ???
+										see devlog v2

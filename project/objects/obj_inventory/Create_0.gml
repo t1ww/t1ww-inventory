@@ -457,7 +457,7 @@ mouse_click = function(){
 				}
 			}
 			rClick_end();
-		}
+		}	
 		
 		// right-click handling
 		if (rightClick) {

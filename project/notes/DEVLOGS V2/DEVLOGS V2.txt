@@ -1,0 +1,55 @@
+/// DEVLOG v2 For new version of this inventory system ///
+
+TOPIC ONE : ds_grid[# unreadable numbers] -> ds_list[ <<struct>>]
+	
+	... read the "why is there new version ongoing" note for reason
+	
+	i soon realised it's much better to have written it in struct into ds_list ..
+	well .. like this
+```
+	ds_list [| item_in_slot]
+	item_in_slot = {
+		item_index, 
+		amount,
+		favourite,
+		
+	// I can even add more without having to remember which number for which feature.
+
+	}
+```
+	which would allow me to call it easier and (very important), readable
+	
+	ds_list[| selected_slot].item_index.use();
+	ds_list[| selected_slot].amount--;
+	ds_list[| selected_slot].favourite = true;
+	etc ...
+}
+
+TOPIC TWO : interaction state
+	
+	v1 is handled with tons of if nests and globalvar mouse_inv WHICH DECLARED in cont_inventory
+	so bad, much cringe
+	
+>> how do i fix this?
+	
+	<< state machine >>
+	where we have step handle which state is on
+	and the we call state.step
+	
+	like this
+	(just imagine states init by ourselves)
+	
+	step event: 
+	
+	input.check_pressed(mb_left, shift)		state = move_all
+	input.check_pressed(mb_right, shift)	state = move_one
+	input.check_pressed(mb_left)			state = mouse_get_all
+	input.check_pressed(mb_right)			state = mouse_get_half
+
+	state.step();
+	
+	u see, cleaner and better, yay
+	
+	i should sleep
+	
+	- tew, 06/14/2024 : 02:46
