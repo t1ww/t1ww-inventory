@@ -1,0 +1,63 @@
+// 3/1/2023 : just started the project (planning)
+// 16/4/2023 : most systems are done, creating inv, adding items, 
+	mouse interaction ( leftclick, rightclick + shift), drawing items on inventory and mouse.
+	.. expanding inventory is not working rn.
+	.. still no shift clicking for leftclick.
+	.. unused functions (not properly at least); drop, remove, use(need to be done)
+todo > ...
+	.. resize inventory function, need to change how they draw / handle size, width ,and height variables
+	.. use checking functions to assists reading in ifs statements ( and easier to change )
+	.. deal with drop and remove functions to make the system use it properly and consistently
+// 19/4/2023
+	adjusting how mouse interacts with item outside inventory 
+	mouse lclick ; drop all > use
+	mouse rclick ; drop1 > drop all
+todo > --- still the same from 16/4/2023
+// 26/4/2023
+	added holding right click
+// 27/5/2023
+	added chest for inventory
+// ?? ?? ????
+	did the resize fix but forgot to note into devlogs
+	need to fix in area > was this fixed? >no
+	
+// in area is not working in hotbar
+
+// 1/11/2023 : 2am 
+	trying to fix in area by drawing rectagle for debug, almost got it but sleepy will cont later
+// 1/11/2023 : 4:49pm
+	done fixing in area somehow it broke when i minus starting point by the gap?
+	
+
+// 04 / 01 / 2024 : 1:33am
+	fuck i didnt keep track for what i did
+- recalling
+	i fixed the in area by completely remake it iirc
+	i reorganized most of the code, separated it into different objects
+	global mouse now doesnt use with (it doesnt need to)
+	i did chest and market
+	i did prepare shift left click for quick transfer ( its currently does nothing )
+	i also add new unstackable item (hat) -> breaks
+	
+// 04 / 01 / 2024 : 1:52am
+	i added notes and re-organized the items setup codes with some comment
+	should help with the future workflow and less confusing
+	
+// 11 / 01 / 2024 : 2:18pm
+	the stacking is broken
+	doing the save and load, still cant load the grid
+	type limit block mouse from grabbing the item back
+	// : 2:18pm
+	can save the grid now (thanks to FrostyCat's grid_to_struct(grid) function)
+
+// 12 / 01 / 2024 : 3:02pm
+	fixed stacking
+	fixed type limit
+	stock in market now reduced when bought
+	stock doesnt come back by selling the item
+	
+// 08 / 02 / 2024 : 2:21pm
+	something is wrong with inventory after i load it
+	same items sometimes swaps instead of stacking
+	and the items doesnt get removed after using all of it from the stack and gets through -1
+	it seems like the item index is wrong, will have to recheck

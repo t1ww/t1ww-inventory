@@ -1,0 +1,27 @@
+/// all the features note
+// button click for inv management
+	left click -> swap item with mouse
+		- stack from mouse into the stack if its the same item
+	right click -> take item by one 
+		- can hold rclick to take items faster
+	shift lclick -> null
+	shift rclick -> take item by half
+// other feature
+	hotbar inv -> kind of there for easier usage
+		- built in pointer
+		- basically thats it
+	market inv -> buy item, basically inv but doesnt reduce the item
+		- already have simple the money system
+		- item amout determine stock, set to -1 for unlimited stock
+		- stock bought are gone forever
+		- ctrl + z to buy back item sold
+	chests instance -> comes with interactions system (just mouse hover close to highlight, E to open)
+		- using it's locally (instance) created inv
+	item usage -> similar to terraria
+		- item can be used buy lclick outside the inventories area
+		- rclick outside inv will throw the item out, supposedly will have it create dropped item to collect
+		
+./ // items
+// created using structs
+	- list of itemtypes can be seen in inventory scripts
+	-

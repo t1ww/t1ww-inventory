@@ -1,0 +1,31 @@
+create an inventory list using ds_grid(xsize = 10, ysize = 1, element[item, amount])
+///inside inventorySystem object
+//inventory interaction
++shift {
+	left click, transfer all to other inventory
+}
++ctrl {
+	left click, delete all of that stack (put in trash bin slot)
+	right click, delete one of that stack
+}
+// dropped item
+	stores item, amount
+	if touch player) add item to inventory; delete self;
+///saveAndLoad object
+//save and load the inventory
+
+
+// 13 / 10 / 2023 : new current plan
+- mouse state machine -> might not do this anymore?
+	- mouse empty
+	- mouse holding item
+	- mouse quick equip
+	- mouse quick store (chest)
+	
+- equipment system -> kind of did this
+	- item.equip();
+	- item.unequip();
+	
+- save and load the inventory -> doing this; 11/1/2024
+
+- maybe add buy back list, it currently only stores one latest sold
