@@ -2,8 +2,10 @@
 // const
 #macro horizontal 0
 #macro vertical 1
+#macro null pointer_null
+
 /// functions
-// save and load
+// SAVING AND LOADING SCRIPTS
 function inventory_save(_filename, _inventory){
 	var _struct = {}
 	with(_inventory){
@@ -39,46 +41,27 @@ function inventory_load(_filename){
 	}
 	show_debug_message($"{_filename} not found");
 }
-// creation
+
+// CREATION SCRIPTS
+function base_inventory_create(_x = 0,_y = 0,_sizes = 1,_wraps = -1,_orientation = horizontal
+							,_item_type_limits = null){
+	var _inv = instance_create_depth(_x,_y,0,obj_inventory_base);
+	with(_inv) {
+		x = _x; y = _y;
+		grid_size = _size;
+		wraps	  = _wraps;
+		orientation = _orientation;
+		item_type_limits = _item_type_limits;
+	}
+	return _inv;
+}
 function inventory_create(_x = 0,_y = 0,_sizes = 1,_wraps = -1,_orientation = horizontal
-							,_typeLimitationArray = null, _active = false){
-	var inv = instance_create_depth(_x,_y,0,obj_inventory);
-	inv.set_size(_sizes)
+							,_item_type_limits = null){
+	var _inv = instance_create_depth(_x,_y,0,obj_inventory);
+	_inv.set_size(_sizes)
 		.set_wraps(_wraps)
 		.set_orientation(_orientation)
 		.set_type_limitation(_typeLimitationArray)
 		;
-	if(_active){inv.active = true;}
-	return inv;
-}
-function hotbar_create(_x = 0,_y = 0,_sizes = 1,_wraps = -1,_orientation = horizontal
-							,_typeLimitationArray = null, _active = false){
-	var inv = instance_create_depth(_x,_y,0,obj_hotbar_inventory);
-	inv.set_size(_sizes)
-		.set_wraps(_wraps)
-		.set_orientation(_orientation)
-		.set_type_limitation(_typeLimitationArray)
-		;
-	if(_active){inv.active = true;}
-	return inv;
-}
-function market_inventory_create(_x = 0,_y = 0,_sizes = 1,_wraps = -1,_orientation = horizontal, _active = false){
-	var inv = instance_create_depth(_x,_y,0,obj_market_inventory);
-	inv.set_size(_sizes)
-		.set_wraps(_wraps)
-		.set_orientation(_orientation)
-		;
-	if(_active){inv.active = true;}
-	return inv;
-}
-// management
-function inventory_add(_inventory, _item, _amount = 1){
-	with(_inventory){
-		add_item(_item,_amount);	
-	}
-}
-function inventory_remove(_inventory, _item, _amount = 1){
-	with(_inventory){
-		// wip	
-	}
+	return _inv;
 }

@@ -1,11 +1,2 @@
-/// @description > no draw
-
-
-
-
-
-
-
-
-
-
+/// @description don't draw self
+// code here >
