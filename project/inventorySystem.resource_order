@@ -8,8 +8,8 @@
     {"name":"Sprites","order":7,"path":"folders/InventorySystem/Sprites.yy",},
     {"name":"itemSprites","order":4,"path":"folders/InventorySystem/Sprites/itemSprites.yy",},
     {"name":"placable_instances_of_inventories","order":3,"path":"folders/InventorySystem/Sprites/placable_instances_of_inventories.yy",},
-    {"name":"Rooms","order":5,"path":"folders/Rooms.yy",},
     {"name":"outdated","order":5,"path":"folders/Notes/outdated.yy",},
+    {"name":"Rooms","order":5,"path":"folders/Rooms.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"spr_item_setup","order":2,"path":"sprites/spr_item_setup/spr_item_setup.yy",},

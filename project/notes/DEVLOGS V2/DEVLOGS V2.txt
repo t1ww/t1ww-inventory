@@ -41,11 +41,20 @@ TOPIC TWO : interaction state
 	
 	step event: 
 	
-	input.check_pressed(mb_left, shift)		state = move_all
-	input.check_pressed(mb_right, shift)	state = move_one
-	input.check_pressed(mb_left)			state = mouse_get_all
-	input.check_pressed(mb_right)			state = mouse_get_half
-
+	state = no_extra_keys;
+	state = holding_shift;
+	state = holding_alt;
+	state = holding_ctrl;
+	state = holding_multiple;
+	
+	no_extra_keys {
+		input.check_pressed(mb_left)	move_all();
+		input.check_pressed(mb_right)	move_one();
+	}
+	holding_shift {
+		input.check_pressed(mb_left)	mouse_get_all();
+		input.check_pressed(mb_right)	mouse_get_half();
+	}
 	state.step();
 	
 	u see, cleaner and better, yay
