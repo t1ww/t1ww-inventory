@@ -18,10 +18,25 @@
 		var _x_index = i mod ((i == array_size)? _last_line_size : grid_line_limit);
 		var _y_index = i div grid_line_limit;
 		var _start = { x: x+grid_gap, y: y+grid_gap }
+		// draw grid slot sprite
 		draw_sprite_stretched(spr_InvSlot, 0,
 			_start.x + (grid_size + grid_gap) * _x_index, 
 			_start.y + (grid_size + grid_gap) * _y_index,
 			grid_size,
 			grid_size
-		)
+		);
+		// draw item sprite
+		if(array[i].item.id != ITEM.nothing.id){
+			draw_sprite_stretched(array[i].item.sprite, 0,
+				_start.x + (grid_size + grid_gap) * _x_index, 
+				_start.y + (grid_size + grid_gap) * _y_index,
+				grid_size,
+				grid_size
+			);
+		}
+		// draw amount number
+			draw_text(_start.x + (grid_size + grid_gap) * _x_index,
+						_start.y + (grid_size + grid_gap) * _y_index,
+						$"{array[i].amount}"
+			);
 	}
