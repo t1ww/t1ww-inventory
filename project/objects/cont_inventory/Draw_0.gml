@@ -1,2 +1,2 @@
-/// @description don't draw self
+/// @description don't draw self -- cont_inventory
 // code here >

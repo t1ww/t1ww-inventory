@@ -1,4 +1,4 @@
-/// @description desc
+/// @description create -- obj_inventory_mouse
 // code here >
 inventory = { item: ITEM.nothing, amount: -1 };
 //
