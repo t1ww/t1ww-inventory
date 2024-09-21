@@ -1,7 +1,7 @@
 {
   "resourceType": "GMFont",
   "resourceVersion": "1.0",
-  "name": "fnt_inv",
+  "name": "fnt_inv_default",
   "AntiAlias": 0,
   "applyKerning": 0,
   "ascender": 11,
@@ -116,7 +116,7 @@
   "italic": false,
   "kerningPairs": [],
   "last": 0,
-  "lineHeight": 14,
+  "lineHeight": 0,
   "maintainGms1Font": false,
   "parent": {
     "name": "InventorySystem",

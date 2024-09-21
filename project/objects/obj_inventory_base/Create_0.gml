@@ -1,19 +1,25 @@
 /// @description create -- obj_inventory_base
 // code here >
+// PRIVATE
+__ = {};
 // VARIABLES INITIALIZATION
 // __ init __
-__INIT = function() {
+__.init = function(_self) {
 	// defaults
-	self[$ "array_size" ] ??= 18;
-	self[$ "orientation"] ??= horizontal;
-	self[$ "grid_size"  ] ??= 32;
-	self[$ "grid_gap"   ] ??= 4;
-	self[$ "grid_line_limit"] ??= 4;
+	_self[$ "array_size"	] ??= 18;
+	_self[$ "orientation"	] ??= horizontal;
+	_self[$ "grid_size"		] ??= 32; // width and height of each grid
+	_self[$ "grid_gap"		] ??= 4;  // gap between each grid
+	_self[$ "grids_per_row" ] ??= 4;  // amount of grids per row
+	// for mouse check
+	// width and height of entire inventory calculated
+	_self[$ "width" ] ??= 0; 
+	_self[$ "height"] ??= 0;
+	update_width_and_height();
 	// //
 	// forced defaults
 	array = array_create(array_size);
 	reset_array();
-	array_focus_index = -1;
 	// [{pos:{x,y}, item, amount, favourite}, ...] //
 	// //							 // //
 }
@@ -93,7 +99,16 @@ __INIT = function() {
 			_e.favourite = false;
 		});	
 	}
-		
+	// UPDATE
+	update_width_and_height = function() {
+		// update width
+		var _size_per_grid = grid_size + grid_gap;
+			// = front gap + (row size * (grid + gap))
+		width  = grid_gap + (min(grids_per_row, array_size) * _size_per_grid);
+			// = top gap + (rounded up of array size / row size) *
+		height = grid_gap + (ceil(array_size / grids_per_row) * _size_per_grid);
+	}
+	
 	// SETTERS
 	set_array_size = function(_size) {
 		array_size = _size;
@@ -108,4 +123,4 @@ __INIT = function() {
 	}
 		
 // end create
-	__INIT();
+	__.init(self);
