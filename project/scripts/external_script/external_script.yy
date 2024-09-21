@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "external_script",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "InventorySystem",
-    "path": "folders/InventorySystem.yy",
+  "$GMScript":"v1",
+  "%Name":"external_script",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"external_script",
+  "parent":{
+    "name":"InventorySystem",
+    "path":"folders/InventorySystem.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -1,9 +1,11 @@
 {
-  "resourceType": "GMNotes",
-  "resourceVersion": "1.1",
-  "name": "plans",
-  "parent": {
-    "name": "outdated",
-    "path": "folders/Notes/outdated.yy",
+  "$GMNotes":"",
+  "%Name":"plans",
+  "name":"plans",
+  "parent":{
+    "name":"outdated",
+    "path":"folders/Notes/outdated.yy",
   },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
 }
