@@ -6,6 +6,7 @@
 	focusing_inventory_index = null;
 #region DEBUG OVERLAY
 	dbg_watch(ref_create(self, "focusing_inventory"))
+	dbg_watch(ref_create(self, "focusing_inventory_index"))
 #endregion
 // Create mouse inventory object
 	instance_create_layer(x,y,layer,obj_inventory_mouse);

@@ -11,4 +11,8 @@
 instance_create_layer(x,y,layer, cont_inventory);
 
 // Create inventory + ui
-inv = instance_create_layer(x,y, layer, obj_inventory_base);
+inv = instance_create_layer(x,y, layer, obj_inventory_base,
+{
+	grid_gap : 12,
+	array_size : 29,
+});

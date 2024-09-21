@@ -62,3 +62,6 @@ TOPIC TWO : interaction state
 	i should sleep
 	
 	- tew, 06/14/2024 : 02:46
+	
+// 22/09/2024 : interaction
+	- progress; currently just done with inventory line ups and feedback, next is mouse click
