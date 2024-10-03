@@ -32,8 +32,8 @@ draw_set_font(fnt_inv_default);
 		// draw item sprite
 		if(array[i].item.id != ITEM.nothing.id){
 			draw_sprite_stretched(array[i].item.sprite, -1,
-				_end.x + (grid_size + grid_gap) * _x_index, 
-				_end.y + (grid_size + grid_gap) * _y_index,
+				_start.x + (grid_size + grid_gap) * _x_index, 
+				_start.y + (grid_size + grid_gap) * _y_index,
 				grid_size,
 				grid_size
 			);
@@ -42,8 +42,9 @@ draw_set_font(fnt_inv_default);
 		// at bottom right
 			draw_set_halign(fa_right);
 			draw_set_valign(fa_bottom);
-			draw_text(_start.x + (grid_size + grid_gap) * _x_index,
-						_start.y + (grid_size + grid_gap) * _y_index,
-						(array[i].amount == -1)? "" : $"{(array[i].amount)}"
+			draw_text(
+				_end.x + (grid_size + grid_gap) * _x_index,
+				_end.y + (grid_size + grid_gap) * _y_index,
+				(array[i].amount == -1)? "" : $"{(array[i].amount)}"
 			);
 	}

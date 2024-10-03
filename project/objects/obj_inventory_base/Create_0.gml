@@ -121,6 +121,32 @@ __.init = function(_self) {
 		// //
 		return self;	
 	}
+	
+	// ACTION
+	action_left = function() {
+		
+	}
+	action_right = function() {
+		
+	}
+	action_shift_left = function() {
+		
+	}
+	action_shift_right = function() {
+		
+	}
+	action_ctrl_left = function() {
+		
+	}
+	action_ctrl_right = function() {
+		
+	}
+	action_alt_left = function() {
+		
+	}
+	action_alt_right = function() {
+		
+	}
 		
 // end create
 	__.init(self);
