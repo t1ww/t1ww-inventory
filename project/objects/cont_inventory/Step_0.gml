@@ -9,12 +9,12 @@
 		&& (mouse_gui_x > x and mouse_gui_x < x + width) 
 		&& (mouse_gui_y > y and mouse_gui_y < y + height){
 			other.focusing_inventory = self;
-			return;
+			break; // using "break" because "return" will exit the code
 		}
 	}
 
 /// FINDING THE RIGHT INDEX
-if (focusing_inventory != null) {
+if (focusing_inventory != null) { 
 	with (focusing_inventory) {
 		for(var i = 0; i < array_size; i++){
 			var _start_x, _start_y, _end_x, _end_y;
@@ -26,7 +26,7 @@ if (focusing_inventory != null) {
 			if (mouse_gui_x > _start_x and mouse_gui_x < _end_x)
 			&& (mouse_gui_y > _start_y and mouse_gui_y < _end_y) {
 				other.focusing_inventory_index = i;
-				return;
+				break;
 			}
 		}
 	}
