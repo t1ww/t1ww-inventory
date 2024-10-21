@@ -123,10 +123,10 @@ __.init = function(_self) {
 	}
 	
 	// ACTION
-	action_left = function() {
+	action_left = function(_mouse_inv, _inst_inv) {
 		
 	}
-	action_right = function() {
+	action_right = function(_mouse_inv, _inst_inv) {
 		
 	}
 	action_shift_left = function() {

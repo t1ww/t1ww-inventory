@@ -22,11 +22,17 @@ draw_set_font(fnt_inv_default);
 		var _start = { x: x + grid_gap, y: y + grid_gap }
 		var _end = { x: _start.x + grid_size, y: _start.y + grid_size }
 		// draw grid slot sprite (highlight if on mouse)
-		draw_sprite_stretched((cont_inventory.focusing_inventory_index == i)? spr_InvSlotPointer : spr_InvSlot, -1,
-			_start.x + (grid_size + grid_gap) * _x_index, 
-			_start.y + (grid_size + grid_gap) * _y_index,
-			grid_size,
-			grid_size
+		draw_sprite_stretched(
+			(  cont_inventory.focusing_inventory != null
+			&& cont_inventory.focusing_inventory.id == id
+			&& cont_inventory.focusing_inventory_index == i
+			)? 
+				spr_InvSlotPointer : spr_InvSlot, 
+				-1,// subimg
+				_start.x + (grid_size + grid_gap) * _x_index, 
+				_start.y + (grid_size + grid_gap) * _y_index,
+				grid_size,
+				grid_size
 		);
 		
 		// draw item sprite
