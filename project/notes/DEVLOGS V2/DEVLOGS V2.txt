@@ -65,3 +65,6 @@ TOPIC TWO : interaction state
 	
 // 22/09/2024 : interaction
 	- progress; currently just done with inventory line ups and feedback, next is mouse click
+	
+// 13/11/2024 : interaction p2
+	- progress; did simple left click
