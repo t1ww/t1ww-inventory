@@ -1,4 +1,9 @@
 /// @description create -- obj_inventory_base
+
+// !!! INTERACTIONS NOT INCLUDED !!!
+// ACTIONS ARE HANDLED IN obj_inventory
+// or any other inherited inventories
+
 // code here >
 // PRIVATE
 __ = {};
@@ -63,9 +68,7 @@ __.init = function(_self) {
 			} // end for loop
 		#endregion }
 		// else is inventory is full
-		//
 		// // drop_the_rest(); WIP !!! !!! !!! !!!
-		//
 		show_debug_message($"ref: '{self}' inventory is full while trying to add");
 	}
 	remove = function(_item, _amount = 1) {
@@ -120,32 +123,6 @@ __.init = function(_self) {
 		orientation = _orientation;
 		// //
 		return self;	
-	}
-	
-	// ACTION
-	action_left = function(_mouse_inv, _inst_inv) {
-		
-	}
-	action_right = function(_mouse_inv, _inst_inv) {
-		
-	}
-	action_shift_left = function() {
-		
-	}
-	action_shift_right = function() {
-		
-	}
-	action_ctrl_left = function() {
-		
-	}
-	action_ctrl_right = function() {
-		
-	}
-	action_alt_left = function() {
-		
-	}
-	action_alt_right = function() {
-		
 	}
 		
 // end create
