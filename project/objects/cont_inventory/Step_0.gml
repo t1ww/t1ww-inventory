@@ -34,7 +34,12 @@ if (focusing_inventory != null) {
 // //
 
 /// ACTIONS
-if (focusing_inventory != null and focusing_inventory_index != null) {
+if (
+	focusing_inventory != null 
+and focusing_inventory_index != null
+// (item both not empty at the same time)
+and !(focusing_inventory.array[focusing_inventory_index].item.id == ITEM.nothing.id and mouse.inventory.item.id == ITEM.nothing.id)
+) {
 	var _action = null;
 	// held down keys
 	if (keyboard_check(vk_alt)) {
@@ -58,5 +63,13 @@ if (focusing_inventory != null and focusing_inventory_index != null) {
 	} else
 	if (mouse_check_button_pressed(mb_right)){
 		_action.right();	
+	}
+} else {
+	if (mouse_check_button_pressed(mb_left)) {
+		// drop whole item
+		mouse.clear_item();
+	}
+	if (mouse_check_button_pressed(mb_right)){
+		mouse.remove();
 	}
 }

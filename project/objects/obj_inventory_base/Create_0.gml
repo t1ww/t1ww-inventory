@@ -68,9 +68,7 @@ __.init = function(_self) {
 			} // end for loop
 		#endregion }
 		// else is inventory is full
-		//
 		// // drop_the_rest(); WIP !!! !!! !!! !!!
-		//
 		show_debug_message($"ref: '{self}' inventory is full while trying to add");
 	}
 	remove = function(_item, _amount = 1) {

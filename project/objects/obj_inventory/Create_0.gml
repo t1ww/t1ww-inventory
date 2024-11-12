@@ -8,9 +8,14 @@ event_inherited();
 	action = {
 		none: {
 			left: function() {
-				// if same item, fill
-				cont_inventory.mouse.swap_item();
-				// else swap
+				var _ci = cont_inventory;
+				if (_ci.focusing_inventory.array[_ci.focusing_inventory_index].item.id == _ci.mouse.inventory.item.id) {
+					// if same item, fill
+					_ci.mouse.fill_item();
+				} else {
+					// else swap
+					_ci.mouse.swap_item();
+				}
 			},
 			right: function() {
 				// take one, can held down
