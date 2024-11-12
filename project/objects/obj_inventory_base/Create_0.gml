@@ -1,4 +1,9 @@
 /// @description create -- obj_inventory_base
+
+// !!! INTERACTIONS NOT INCLUDED !!!
+// ACTIONS ARE HANDLED IN obj_inventory
+// or any other inherited inventories
+
 // code here >
 // PRIVATE
 __ = {};
@@ -120,32 +125,6 @@ __.init = function(_self) {
 		orientation = _orientation;
 		// //
 		return self;	
-	}
-	
-	// ACTION
-	action_left = function() {
-		
-	}
-	action_right = function() {
-		
-	}
-	action_shift_left = function() {
-		
-	}
-	action_shift_right = function() {
-		
-	}
-	action_ctrl_left = function() {
-		
-	}
-	action_ctrl_right = function() {
-		
-	}
-	action_alt_left = function() {
-		
-	}
-	action_alt_right = function() {
-		
 	}
 		
 // end create
