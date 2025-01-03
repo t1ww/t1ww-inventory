@@ -60,13 +60,9 @@ and (focusing_inventory.array[focusing_inventory_index].item.id != ITEM.nothing.
 		// HELD NONE
 		_action = focusing_inventory.action.none; // safety
 	} 
-	// clicks
-	if (mouse_check_button_pressed(mb_left)) {
+	// Mouse actions
 		_action.left();
-	} else
-	if (mouse_check_button_pressed(mb_right)){
-		_action.right();	
-	}
+		_action.right();
 } else {
 	// Only if Mouse in not in any inventory area
 	if (focusing_inventory == null ) {

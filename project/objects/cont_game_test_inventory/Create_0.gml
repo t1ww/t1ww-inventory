@@ -3,7 +3,7 @@
 #region DEBUG OVERLAY
 	dbg_view("Value", true, 100);
 	dbg_button("add apple",function(){
-		inv.add(ITEM.apple, 15623);	
+		inv.add_item(ITEM.apple, 15623);	
 	});
 #endregion
 

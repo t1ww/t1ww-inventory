@@ -3,11 +3,11 @@
 grid_size = 32;
 inventory = { item: ITEM.nothing, amount: -1 };
 
-add = function(_item, _amount = 1) {
-    if (inventory.item == ITEM.nothing) {
+add_item = function(_item, _amount = 1) {
+    if (inventory.item.id == ITEM.nothing.id) {
         inventory.item = _item;
         inventory.amount = _amount;
-    } else if (inventory.item != ITEM.nothing) {
+    } else if (inventory.item.id != ITEM.nothing.id) {
 		// Make sure it's the same item
 		if(inventory.item.id == _item.id) {
 			inventory.amount += _amount;
@@ -26,7 +26,7 @@ remove_item = function(_amount = 1) {
 		return false;
 	}
 	
-    if (inventory.item != ITEM.nothing) {
+    if (inventory.item.id != ITEM.nothing.id) {
         inventory.amount -= _amount;
     }
 	// Set item to nothing when it reach zero

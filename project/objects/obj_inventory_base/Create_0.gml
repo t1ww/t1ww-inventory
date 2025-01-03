@@ -29,7 +29,7 @@ __.init = function(_self) {
 	// //							 // //
 }
 // functions for management
-	add = function(_item, _amount = 1) {
+	add_item = function(_item, _amount = 1) {
 		var _remainding_amount = _amount;
 		var _array_length = array_size;
 		#region // find matching slot {
@@ -62,29 +62,41 @@ __.init = function(_self) {
 					} else {
 						_index.item = _item;
 						_index.amount = _item.stack_size;
-						_remainding_amount -= _item.stack_size; // doesnt fit, just add and reduce amount
+						_remainding_amount -= _item.stack_size; // doesnt fit, just add_item and reduce amount
 					}
 				}
 			} // end for loop
 		#endregion }
 		// else is inventory is full
 		// // drop_the_rest(); WIP !!! !!! !!! !!!
-		show_debug_message($"ref: '{self}' inventory is full while trying to add");
+		show_debug_message($"ref: '{self}' inventory is full while trying to add_item");
 	}
-	remove = function(_item, _amount = 1) {
+	remove_item = function(_item, _index, _amount = 1) {
+		var _inventory = array[_index];
+		show_debug_message($"Calling inventory's remove_item(index: {_index}, amount: {_amount})");
+		// Make sure it's possible
+		if (_amount > _inventory.amount) {
+			// not possible, return false (can be used for amount check)
+			show_debug_message("Failed to call remove_item(): insufficient amount in inventory");
+			return false;
+		}
+	
+	    if (_inventory.item.id != ITEM.nothing.id) {
+	        _inventory.amount -= _amount;
+	    }
+		// Set item to nothing when it reach zero
+		if (_inventory.amount == 0) {
+			_inventory.item = ITEM.nothing;	
+		}
+		// Removed successfully
+		return true;
+	}
+	find_and_remove_item = function(_item, _amount = 1) {
 		var _array_length = array_length(array);
-		#region // find matching slot {
-			for(var _i = 0; _i < _array_length; _i++) {
-				var _index = ptr(array[_i]); // array index pointer
-				if (_index.item.id != ITEM.nothing.id) {
-					_index.amount -= _amount;
-					if (_index._amount == 0) {
-						_index.item = ITEM.nothing;
-						_index._amount = -1;
-					}
-				}
-			} // end for loop
-		#endregion }
+		for(var _i = 0; _i < _array_length; _i++) {
+			// Find same item,
+			// Remove it (if it's too much, remember, deduct total, and find in other index)
+		}
 	}
 	reset_array = function() {
 		array_foreach(array, function(_e, _i) {
