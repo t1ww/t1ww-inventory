@@ -8,20 +8,48 @@ add = function(_item, _amount = 1) {
         inventory.item = _item;
         inventory.amount = _amount;
     } else if (inventory.item != ITEM.nothing) {
-        inventory.amount += _amount;
+		// Make sure it's the same item
+		if(inventory.item.id == _item.id) {
+			inventory.amount += _amount;
+		} else {
+			show_debug_message("Adding denied: Attempted to add a different item to mouse");
+		}
     }
 };
 
-remove = function(_amount = 1) {
+remove_item = function(_amount = 1) {
+	show_debug_message($"Calling mouse's remove_item({_amount})");
+	// Make sure it's possible
+	if (_amount > inventory.amount) {
+		// not possible, return false (can be used for amount check)
+		show_debug_message("Failed to call remove_item(): insufficient amount in inventory");
+		return false;
+	}
+	
     if (inventory.item != ITEM.nothing) {
         inventory.amount -= _amount;
     }
+	// Set item to nothing when it reach zero
+	if (inventory.amount == 0) {
+		inventory.item = ITEM.nothing;	
+	}
+	// Removed successfully
+	return true;
 };
 
 clear_item = function() {
+	show_debug_message("Calling mouse's clear_item()");
     inventory.item = ITEM.nothing;
     inventory.amount = -1;
 };
+
+use_item = function() {
+	show_debug_message("Calling mouse's use_item()");
+	if (inventory.item != ITEM.nothing) {
+		inventory.item.use();
+		remove_item();
+	}
+}
 
 // Interaction functions
 swap_item = function() {

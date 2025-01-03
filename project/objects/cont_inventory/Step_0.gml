@@ -34,11 +34,14 @@ if (focusing_inventory != null) {
 // //
 
 /// ACTIONS
-if (
-	focusing_inventory != null 
-and focusing_inventory_index != null
-// (item both not empty at the same time)
-and !(focusing_inventory.array[focusing_inventory_index].item.id == ITEM.nothing.id and mouse.inventory.item.id == ITEM.nothing.id)
+/*
+	 // If inventory focused
+	 // and one of it's index is focused
+	 // and mouse or inventory has something
+*/
+if ((focusing_inventory != null)
+and (focusing_inventory_index != null)
+and (focusing_inventory.array[focusing_inventory_index].item.id != ITEM.nothing.id or mouse.inventory.item.id != ITEM.nothing.id)
 ) {
 	var _action = null;
 	// held down keys
@@ -55,7 +58,7 @@ and !(focusing_inventory.array[focusing_inventory_index].item.id == ITEM.nothing
 		_action = focusing_inventory.action.control;
 	} else {
 		// HELD NONE
-		_action = focusing_inventory.action.none; // just in case
+		_action = focusing_inventory.action.none; // safety
 	} 
 	// clicks
 	if (mouse_check_button_pressed(mb_left)) {
@@ -65,11 +68,14 @@ and !(focusing_inventory.array[focusing_inventory_index].item.id == ITEM.nothing
 		_action.right();	
 	}
 } else {
-	if (mouse_check_button_pressed(mb_left)) {
-		// drop whole item
-		mouse.clear_item();
-	}
-	if (mouse_check_button_pressed(mb_right)){
-		mouse.remove();
+	// Only if Mouse in not in any inventory area
+	if (focusing_inventory == null ) {
+		if (mouse_check_button_pressed(mb_left)) {
+			// use item in mouse
+			mouse.use_item();
+		}
+		if (mouse_check_button_pressed(mb_right)){
+			mouse.remove_item();
+		}
 	}
 }
