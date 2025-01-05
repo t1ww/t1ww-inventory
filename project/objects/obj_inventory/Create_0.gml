@@ -21,6 +21,26 @@ event_inherited();
 			},
 			right: function() {
 				// Take one, can held down
+				
+				// Initialize the timer
+				self[$ "timer_interval_start"] ??= 30;
+				self[$ "timer_interval "] ??= timer_interval_start;
+				
+				// Function for handling the held down loop
+				to_be_called = function() {
+					if (mouse_check_button(mb_right)) {
+						var _ci = cont_inventory;
+						var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
+						// Take one item from inventory to mouse
+						_ci.mouse.add_item(_inv_item, 1);
+						// Gradually get faster
+						var _cap = 1;
+						timer_interval = max(timer_interval*.75, _cap);
+						call_later(timer_interval, time_source_units_frames, to_be_called);
+					}
+				}
+				
+				// Handling right click
 				if (mouse_check_button_pressed(mb_right)) {
 					// If same item or inventory has item and mouse is empty
 					var _ci = cont_inventory;
@@ -31,15 +51,9 @@ event_inherited();
 						// Take one
 						_ci.mouse.add_item(_inv_item, 1);
 						_ci.focusing_inventory.remove_item(_mouse_item, _ci.focusing_inventory_index, 1);
-						// start timer
-						timer_interval = 60;
-						hold_pause_timer = call_later(timer_interval, time_source_units_frames, function(){
-							// Take another one
-							
-							// Gradually get faster (cap at 6)
-							var _cap = 6;
-							timer_interval = max(timer_interval/2, _cap);
-						});
+						// Start timer
+						timer_interval = timer_interval_start;
+						call_later(timer_interval, time_source_units_frames, to_be_called);
 					}
 				}
 			}
