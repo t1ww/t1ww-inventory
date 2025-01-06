@@ -84,9 +84,9 @@ __.init = function(_self) {
 	    if (_inventory.item.id != ITEM.nothing.id) {
 	        _inventory.amount -= _amount;
 	    }
-		// Set item to nothing when it reach zero
+		// Clear item to nothing when it reach zero
 		if (_inventory.amount == 0) {
-			_inventory.item = ITEM.nothing;	
+			clear_item(_index);
 		}
 		// Removed successfully
 		return true;
@@ -103,11 +103,18 @@ __.init = function(_self) {
 			array[_i] = { item : ITEM.nothing, amount : -1, favourite : false };
 		});	
 	}
-	clear_item = function() {
-		array_foreach(array, function(_e, _i) {
-			_e.item = ITEM.nothing;
-			_e.amount = -1;
-		});
+	clear_item = function(_index = null) {
+		if (_index == null) {
+			// Clear all
+			array_foreach(array, function(_e, _i) {
+				_e.item = ITEM.nothing;
+				_e.amount = -1;
+			});
+		} else {
+			// Clear specific index
+			array[_index].item = ITEM.nothing;
+			array[_index].amount = -1;
+		}
 	}
 	clear_favourite = function() {
 		array_foreach(array, function(_e, _i) {
