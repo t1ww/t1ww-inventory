@@ -2,30 +2,6 @@
 // Inherit the parent event
 event_inherited();
 // > code here
-// HELPER
-// Function for handling held down loop
-to_be_called = function() {
-	var _ci = cont_inventory;
-	// Only continue if holding right button and valid slot
-	if (mouse_check_button(mb_right) && _ci.focusing_inventory_index != null) {
-		var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
-
-		// Add to mouse and remove from inventory
-		_ci.mouse.add_item(_inv_item, 1);
-		_ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1); // Fixed removal item
-
-		// Accelerate timer but clamp minimum speed
-		var _cap = 1;
-		self[$ "timer_interval"] = floor(max(self[$ "timer_interval"] * 0.75, _cap));
-
-		// Cancel any previous timer before creating new one
-		if (self[$ "timer_id"] != undefined) call_cancel(self[$ "timer_id"]);
-		self[$ "timer_id"] = call_later(self[$ "timer_interval"], time_source_units_frames, to_be_called);
-	} else {
-		// Clear timer ID when button is released
-		self[$ "timer_id"] = undefined;
-	}
-};
 
 // ACTION
 action = {
@@ -49,7 +25,31 @@ action = {
 		    // Initialize timer settings correctly
 		    self[$ "timer_interval_start"] ??= 20; // Initial delay
 		    self[$ "timer_interval"] ??= self[$ "timer_interval_start"]; // Fixed typo and reference
-		    
+
+		    // Function for handling held down loop
+		    to_be_called = function() {
+		        var _ci = cont_inventory;
+		        // Only continue if holding right button and valid slot
+		        if (mouse_check_button(mb_right) && _ci.focusing_inventory_index != null) {
+		            var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
+           
+		            // Add to mouse and remove from inventory
+		            _ci.mouse.add_item(_inv_item, 1);
+		            _ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1); // Fixed removal item
+
+		            // Accelerate timer but clamp minimum speed
+		            var _cap = 1;
+		            self[$ "timer_interval"] = floor(max(self[$ "timer_interval"] * 0.75, _cap));
+           
+		            // Cancel any previous timer before creating new one
+		            if (self[$ "timer_id"] != undefined) call_cancel(self[$ "timer_id"]);
+		            self[$ "timer_id"] = call_later(self[$ "timer_interval"], time_source_units_frames, to_be_called);
+		        } else {
+		            // Clear timer ID when button is released
+		            self[$ "timer_id"] = undefined;
+		        }
+		    };
+
 		    // Handle initial right click press
 		    if (mouse_check_button_pressed(mb_right)) {
 		        var _ci = cont_inventory;
