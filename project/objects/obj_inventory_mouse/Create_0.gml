@@ -44,18 +44,22 @@ clear_item = function() {
 };
 
 use_item = function() {
-	show_debug_message("Calling mouse's use_item()");
-	if (inventory.item != ITEM.nothing) {
+    if (inventory.item != ITEM.nothing) {
+        show_debug_message("Calling mouse's use_item()");
 		inventory.item.use();
 		remove_item();
-	}
+	} else {
+        show_debug_message("Calling mouse's use_item() but it's empty");
+    }
 }
 
 // Interaction functions
 swap_item = function() {
     // Access the inventory array entry directly using an index
+    var _inventory_id = cont_inventory.focusing_inventory.id;
     var _index = cont_inventory.focusing_inventory_index;
     var _array = cont_inventory.focusing_inventory.array;
+    show_debug_message($"Calling mouse's swap_item at inventory: {_inventory_id}, index: {_index}");
 
     // Swap values
     var _temp = { item: inventory.item, amount: inventory.amount };
@@ -66,8 +70,10 @@ swap_item = function() {
 };
 
 fill_item = function() {
+    var _inventory_id = cont_inventory.focusing_inventory.id;
     var _index = cont_inventory.focusing_inventory_index;
     var _array = cont_inventory.focusing_inventory.array;
+    show_debug_message($"Calling mouse's fill_item at inventory: {_inventory_id}, index: {_index}");
 
     if ((inventory.amount + _array[_index].amount) > inventory.item.stack_size) {
         // Overflow case
@@ -81,8 +87,10 @@ fill_item = function() {
 };
 
 take_item = function() {
+    var _inventory_id = cont_inventory.focusing_inventory.id;
     var _index = cont_inventory.focusing_inventory_index;
     var _array = cont_inventory.focusing_inventory.array;
+    show_debug_message($"Calling mouse's take_item at inventory: {_inventory_id}, index: {_index}");
 
     // Take one item at a time
     if (_array[_index].amount > 0) {

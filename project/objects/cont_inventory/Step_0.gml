@@ -66,12 +66,17 @@ and (focusing_inventory.array[focusing_inventory_index].item.id != ITEM.nothing.
 } else {
 	// Only if Mouse in not in any inventory area
 	if (focusing_inventory == null ) {
+		// Use item in mouse
 		if (mouse_check_button_pressed(mb_left)) {
-			// use item in mouse
 			mouse.use_item();
 		}
-		if (mouse_check_button_pressed(mb_right)){
+		// Drop 1 item
+		if (mouse_check_button_pressed(mb_right) and ! keyboard_check(vk_control)){
 			mouse.remove_item();
+		}
+		// Drop all item
+		if (mouse_check_button_pressed(mb_right) and keyboard_check(vk_control)){
+			mouse.clear_item();
 		}
 	}
 }

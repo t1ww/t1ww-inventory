@@ -22,54 +22,66 @@ action = {
 		},
 		// Take one, can held down
 		right: function() {
-		    // Initialize timer settings correctly
-		    self[$ "timer_interval_start"] ??= 20; // Initial delay
-		    self[$ "timer_interval"] ??= self[$ "timer_interval_start"]; // Fixed typo and reference
-
-		    // Function for handling held down loop
-		    to_be_called = function() {
-		        var _ci = cont_inventory;
-		        // Only continue if holding right button and valid slot
-		        if (mouse_check_button(mb_right) && _ci.focusing_inventory_index != null) {
-		            var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
-           
-		            // Add to mouse and remove from inventory
-		            _ci.mouse.add_item(_inv_item, 1);
-		            _ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1); // Fixed removal item
-
-		            // Accelerate timer but clamp minimum speed
-		            var _cap = 1;
-		            self[$ "timer_interval"] = floor(max(self[$ "timer_interval"] * 0.75, _cap));
-           
-		            // Cancel any previous timer before creating new one
-		            if (self[$ "timer_id"] != undefined) call_cancel(self[$ "timer_id"]);
-		            self[$ "timer_id"] = call_later(self[$ "timer_interval"], time_source_units_frames, to_be_called);
-		        } else {
-		            // Clear timer ID when button is released
-		            self[$ "timer_id"] = undefined;
-		        }
-		    };
-
-		    // Handle initial right click press
-		    if (mouse_check_button_pressed(mb_right)) {
-		        var _ci = cont_inventory;
-		        var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
-		        var _mouse_item = _ci.mouse.inventory.item;
-
-		        // Check if items are compatible
-		        if (_inv_item.id == _mouse_item.id || (_inv_item.id != ITEM.nothing.id && _mouse_item.id == ITEM.nothing.id)) {
-		            // Transfer items
-		            _ci.mouse.add_item(_inv_item, 1);
-		            _ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1); // Fixed removal item
-
-		            // Cancel any existing timer before starting new
-		            if (self[$ "timer_id"] != undefined) call_cancel(self[$ "timer_id"]);
-           
-		            // Reset interval and start timer
-		            self[$ "timer_interval"] = self[$ "timer_interval_start"];
-		            self[$ "timer_id"] = call_later(self[$ "timer_interval"], time_source_units_frames, to_be_called);
-		        }
-		    }
+			// Initialize timer struct (only once per instance)
+			self[$ "timer_data"] ??= {
+				id: undefined,         // Active timer handle
+				interval_start: 20,    // Initial delay
+				interval: 20           // Current interval (accelerates over time)
+			};
+		
+			// Handler for held-down loop
+			self[$ "to_be_called"] ??= function() {
+				var _ci = cont_inventory;
+				if (mouse_check_button(mb_right) && _ci.focusing_inventory_index != null) {
+					var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
+		
+					// Transfer items
+					_ci.mouse.add_item(_inv_item, 1);
+					_ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1);
+		
+					// Accelerate timer (min 1 frame)
+					self.timer_data.interval = floor(max(
+						self.timer_data.interval * 0.75,
+						1
+					));
+		
+					// Cancel previous timer if exists
+					if (self.timer_data.id != undefined) call_cancel(self.timer_data.id);
+					
+					// Create new timer with updated interval
+					self.timer_data.id = call_later(
+						self.timer_data.interval,
+						time_source_units_frames,
+						self[$ "to_be_called"]
+					);
+				} else {
+					self.timer_data.id = undefined; // Clear when released
+				}
+			};
+		
+			// Handle initial click
+			if (mouse_check_button_pressed(mb_right)) {
+				var _ci = cont_inventory;
+				var _inv_item = _ci.focusing_inventory.array[_ci.focusing_inventory_index].item;
+				var _mouse_item = _ci.mouse.inventory.item;
+		
+				if (_inv_item.id == _mouse_item.id || (_inv_item.id != ITEM.nothing.id && _mouse_item.id == ITEM.nothing.id)) {
+					// Initial transfer
+					_ci.mouse.add_item(_inv_item, 1);
+					_ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1);
+		
+					// Cancel existing timer
+					if (self.timer_data.id != undefined) call_cancel(self.timer_data.id);
+					
+					// Reset to initial speed and start
+					self.timer_data.interval = self.timer_data.interval_start;
+					self.timer_data.id = call_later(
+						self.timer_data.interval,
+						time_source_units_frames,
+						to_be_called
+					);
+				}
+			}
 		}
 	},
 	shift: {
