@@ -1,7 +1,7 @@
 /// @description create -- obj_inventory_mouse
 // Initialization
 grid_size = 32;
-inventory = { item: ITEM.nothing, amount: -1 };
+inventory = { item: ITEM.nothing, amount: -1, favourite: false };
 
 add_item = function(_item, _amount = 1) {
     if (inventory.item.id == ITEM.nothing.id) {
@@ -41,6 +41,7 @@ clear_item = function() {
 	show_debug_message("Calling mouse's clear_item()");
     inventory.item = ITEM.nothing;
     inventory.amount = -1;
+    inventory.favourite = false;
 };
 
 use_item = function() {
@@ -62,11 +63,13 @@ swap_item = function() {
     show_debug_message($"Calling mouse's swap_item at inventory: {_inventory_id}, index: {_index}");
 
     // Swap values
-    var _temp = { item: inventory.item, amount: inventory.amount };
+    var _temp = { item: inventory.item, amount: inventory.amount, favourite: inventory.favourite };
     inventory.item = _array[_index].item;
     inventory.amount = _array[_index].amount;
+    inventory.favourite = _array[_index].favourite;
     _array[_index].item = _temp.item;
     _array[_index].amount = _temp.amount;
+    _array[_index].favourite = _temp.favourite;
 };
 
 fill_item = function() {

@@ -29,14 +29,25 @@ draw_set_font(fnt_inv_default);
 			(  cont_inventory.focusing_inventory != null
 			&& cont_inventory.focusing_inventory.id == id
 			&& cont_inventory.focusing_inventory_index == i
-			)? 
-				spr_InvSlotPointer : spr_InvSlot, 
+			)? spr_FavouriteOverlay : spr_InvSlot, 
+			-1,// subimg
+			_start.x + (grid_size + grid_gap) * _x_index, 
+			_start.y + (grid_size + grid_gap) * _y_index,
+			grid_size,
+			grid_size
+		);
+		
+		// Draw favourite overlay
+		if (array[i].favourite == true) {
+			draw_sprite_stretched(
+				spr_InvSlotPointer, 
 				-1,// subimg
 				_start.x + (grid_size + grid_gap) * _x_index, 
 				_start.y + (grid_size + grid_gap) * _y_index,
 				grid_size,
 				grid_size
-		);
+			);
+		}
 		
 		// draw item sprite
 		if(array[i].item.id != ITEM.nothing.id){

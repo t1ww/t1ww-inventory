@@ -56,6 +56,7 @@
     {"id":{"name":"spr_InvSlotPointer","path":"sprites/spr_InvSlotPointer/spr_InvSlotPointer.yy",},},
     {"id":{"name":"fnt_inv_default","path":"fonts/fnt_inv_default/fnt_inv_default.yy",},},
     {"id":{"name":"current features","path":"notes/current features/current features.yy",},},
+    {"id":{"name":"spr_FavouriteOverlay","path":"sprites/spr_FavouriteOverlay/spr_FavouriteOverlay.yy",},},
     {"id":{"name":"shd_outline","path":"shaders/shd_outline/shd_outline.yy",},},
     {"id":{"name":"sprInventoryicon","path":"sprites/sprInventoryicon/sprInventoryicon.yy",},},
     {"id":{"name":"external_script","path":"scripts/external_script/external_script.yy",},},
@@ -68,6 +69,6 @@
   ],
   "templateType": null,
   "TextureGroups": [
-    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":false,"border":2,"compressFormat":"bz2","customOptions":"","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":false,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
   ],
 }

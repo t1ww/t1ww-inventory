@@ -25,7 +25,7 @@ action = {
 		right: function() {
 			// Initialize timer struct (only once per instance)
 			self[$ "timer_data"] ??= {
-				id: undefined,         // Active timer handle
+				inst: undefined,         // Active timer handle
 				interval_start: 20,    // Initial delay
 				interval: 20           // Current interval (accelerates over time)
 			};
@@ -47,16 +47,16 @@ action = {
 					));
 		
 					// Cancel previous timer if exists
-					if (self.timer_data.id != undefined) call_cancel(self.timer_data.id);
+					if (self.timer_data.inst != undefined) call_cancel(self.timer_data.inst);
 					
 					// Create new timer with updated interval
-					self.timer_data.id = call_later(
+					self.timer_data.inst = call_later(
 						self.timer_data.interval,
 						time_source_units_frames,
 						self[$ "to_be_called"]
 					);
 				} else {
-					self.timer_data.id = undefined; // Clear when released
+					self.timer_data.inst = undefined; // Clear when released
 				}
 			};
 		
@@ -72,11 +72,11 @@ action = {
 					_ci.focusing_inventory.remove_item(_inv_item, _ci.focusing_inventory_index, 1);
 		
 					// Cancel existing timer
-					if (self.timer_data.id != undefined) call_cancel(self.timer_data.id);
+					if (self.timer_data.inst != undefined) call_cancel(self.timer_data.inst);
 					
 					// Reset to initial speed and start
 					self.timer_data.interval = self.timer_data.interval_start;
-					self.timer_data.id = call_later(
+					self.timer_data.inst = call_later(
 						self.timer_data.interval,
 						time_source_units_frames,
 						self[$ "to_be_called"]
@@ -117,11 +117,25 @@ action = {
 
 	// Marking favourite
 	alt: {
+		// Toggle Favourite
 		left: function() {
-			
+			if (mouse_check_button_pressed(mb_left)) {
+				var _ci = cont_inventory;
+				var _ci_index = _ci.focusing_inventory.array[_ci.focusing_inventory_index];
+				_ci_index.favourite = !_ci_index.favourite;
+				show_debug_message($"Set favourite to {(_ci_index.favourite ? "true" : "false")}");
+			}
 		},
+		// Force Favourite
 		right: function() {
-				
+			if (mouse_check_button(mb_right)) {
+				var _ci = cont_inventory;
+				var _ci_index = _ci.focusing_inventory.array[_ci.focusing_inventory_index];
+				if (_ci_index.favourite == false) {
+					_ci_index.favourite = true;
+					show_debug_message("Set favourite to true by right clicks");
+				}
+			}
 		}
 	},
 
