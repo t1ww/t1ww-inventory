@@ -1,12 +1,18 @@
-/// all the features note
-// button click for inv management
-	left click -> swap item with mouse
+/// All the features note
+// Mouse clicks for inv management
+	left click 	-> swap item with mouse
 		- stack from mouse into the stack if its the same item
 	right click -> take item by one 
 		- can hold rclick to take items faster
-	shift lclick -> null
-	shift rclick -> take item by half
-// other feature
+	shift + left click 	-> null
+	shift + right click -> take item by half
+
+// Clicking while holding items outside of inventory
+	left click 			-> use item
+	right click 		-> drop 1 of the holding item
+	ctrl + right click 	-> drop all holding item
+
+// Other features (todo)
 	hotbar inv -> kind of there for easier usage
 		- built in pointer
 		- basically thats it

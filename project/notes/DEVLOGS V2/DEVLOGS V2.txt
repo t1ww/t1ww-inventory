@@ -68,3 +68,5 @@ TOPIC TWO : interaction state
 	
 // 13/11/2024 : interaction p2
 	- progress; did simple left click
+
+// 4/4/2025 : Done left clicks and right clicks features

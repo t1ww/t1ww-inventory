@@ -20,6 +20,7 @@ action = {
 				}
 			}
 		},
+
 		// Take one, can held down
 		right: function() {
 			// Initialize timer struct (only once per instance)
@@ -78,17 +79,20 @@ action = {
 					self.timer_data.id = call_later(
 						self.timer_data.interval,
 						time_source_units_frames,
-						to_be_called
+						self[$ "to_be_called"]
 					);
 				}
 			}
 		}
 	},
+
+	// Shift clicks
 	shift: {
 		// Transfer item to another inventory (if opened)
 		left: function() {
 			
 		},
+
 		// Take half
 		right: function() {
 			// Handling right click
@@ -110,6 +114,7 @@ action = {
 			}
 		}
 	},
+
 	// Marking favourite
 	alt: {
 		left: function() {
@@ -119,6 +124,7 @@ action = {
 				
 		}
 	},
+
 	// Trashing / Selling
 	control: {
 		left: function() {
