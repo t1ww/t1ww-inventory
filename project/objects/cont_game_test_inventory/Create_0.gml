@@ -3,7 +3,7 @@
 #region DEBUG OVERLAY
 	dbg_view("Value", true, 100);
 	dbg_button("add apple",function(){
-		inv.add_item(ITEM.apple, 15623);	
+		main_inventory.add_item(ITEM.apple, 15360);	
 	});
 #endregion
 
@@ -11,8 +11,7 @@
 instance_create_layer(x,y,layer, cont_inventory);
 
 // Create inventory + ui
-inv = instance_create_layer(x,y, layer, obj_inventory,
-{
-	grid_gap : 12,
-	array_size : 29,
-});
+main_inventory = instance_create_layer(x,y, layer, obj_inventory);
+main_inventory.set_array_size(29).set_grid_gap(10);
+
+cont_inventory.main_inventory = main_inventory;

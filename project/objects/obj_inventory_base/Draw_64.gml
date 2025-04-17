@@ -9,8 +9,12 @@ draw_set_font(fnt_inv_default);
 	draw_rectangle(x,y , _x_box_right, _y_box_bottom, true);
 	
 // draw inventory focusing area
-	var _x_last_line  = x + ( (grid_gap + grid_size)* 
-		(((array_size mod grids_per_row) == 0)? grids_per_row : (array_size mod grids_per_row)) ) 
+	var _x_last_line  = x + (
+		(grid_gap + grid_size) * (
+			((array_size mod grids_per_row) == 0)
+			? grids_per_row 
+			: (array_size mod grids_per_row)) 
+		) 
 		+ grid_gap;
 	var c = c_green;
 	draw_rectangle_color(x,y , _x_box_right, _y_box_bottom - grid_gap - grid_size, c,c,c,c, true);
@@ -33,8 +37,8 @@ draw_set_font(fnt_inv_default);
 			-1,// subimg
 			_start.x + (grid_size + grid_gap) * _x_index, 
 			_start.y + (grid_size + grid_gap) * _y_index,
-			grid_size,
-			grid_size
+			real(grid_size),
+			real(grid_size)
 		);
 		
 		// Draw favourite overlay

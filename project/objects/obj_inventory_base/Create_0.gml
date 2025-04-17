@@ -8,7 +8,6 @@
 // PRIVATE
 __ = {};
 // VARIABLES INITIALIZATION
-// __ init __
 __.init = function(_self) {
 	// defaults
 	_self[$ "array_size"	] ??= 18;
@@ -16,18 +15,19 @@ __.init = function(_self) {
 	_self[$ "grid_size"		] ??= 32; // width and height of each grid
 	_self[$ "grid_gap"		] ??= 4;  // gap between each grid
 	_self[$ "grids_per_row" ] ??= 4;  // amount of grids per row
-	// for mouse check
-	// width and height of entire inventory calculated
+	
+	// Mouse check area
+	// width and height of entire inventory to be calculated
 	_self[$ "width" ] ??= 0; 
 	_self[$ "height"] ??= 0;
 	update_width_and_height();
-	// //
-	// forced defaults
-	array = array_create(array_size);
+	
+	// Forced defaults
+	array = array_create(real(array_size));
 	reset_array();
 	// [{pos:{x,y}, item, amount, favourite}, ...] //
-	// //							 // //
 }
+
 // functions for management
 	add_item = function(_item, _amount = 1) {
 		var _remainding_amount = _amount;
@@ -135,6 +135,15 @@ __.init = function(_self) {
 	set_array_size = function(_size) {
 		array_size = _size;
 		array_resize(array, array_size);
+		// Updates
+		update_width_and_height();
+		reset_array();
+		// //
+		return self;	
+	}
+	set_grid_gap = function(_gap_distance) {
+		grid_gap = _gap_distance;
+		update_width_and_height();
 		// //
 		return self;	
 	}

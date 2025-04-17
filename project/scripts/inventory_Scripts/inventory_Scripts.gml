@@ -43,27 +43,3 @@ function inventory_load(_filename){
 	}
 	show_debug_message($"{_filename} not found");
 }
-
-// CREATION SCRIPTS
-function base_inventory_create(_x = 0,_y = 0,_sizes = 1,_wraps = -1,_orientation = horizontal
-							,_item_type_limits = null){
-	var _inv = instance_create_depth(_x,_y,0,obj_inventory_base);
-	with(_inv) {
-		x = _x; y = _y;
-		grid_size = _size;
-		wraps	  = _wraps;
-		orientation = _orientation;
-		item_type_limits = _item_type_limits;
-	}
-	return _inv;
-}
-function inventory_create(_x = 0,_y = 0,_sizes = 1,_wraps = -1,_orientation = horizontal
-							,_item_type_limits = null){
-	var _inv = instance_create_depth(_x,_y,0,obj_inventory);
-	_inv.set_size(_sizes)
-		.set_wraps(_wraps)
-		.set_orientation(_orientation)
-		.set_type_limitation(_typeLimitationArray)
-		;
-	return _inv;
-}

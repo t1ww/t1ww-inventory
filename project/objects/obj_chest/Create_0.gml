@@ -1,7 +1,7 @@
 /// @description setup
 highlight = false; // highlight when mouse on top
 // constructor
-this_inventory = inventory_create(50,room_height - 300, 10,5,,,);
+this_inventory = inventory_create(50,room_height - 300, 10,5,,);
 // init variable
 key_interact = null;
 
