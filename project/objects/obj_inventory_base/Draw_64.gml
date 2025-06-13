@@ -2,7 +2,10 @@
 // code here >
 // set font
 draw_set_font(fnt_inv_default);
-
+// Turn of when active == false
+if (active == false) {
+	exit;	
+}
 // DRAW INVENTORY OUTLINE (can also think of background)
 	var _x_box_right  = x + width;
 	var _y_box_bottom = y + height;

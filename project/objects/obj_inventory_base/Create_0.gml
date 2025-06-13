@@ -28,6 +28,9 @@ __.init = function(_self) {
 	// [{pos:{x,y}, item, amount, favourite}, ...] //
 }
 
+// PUBLIC
+	active = false;
+
 // functions for management
 	add_item = function(_item, _amount = 1) {
 		var _remainding_amount = _amount;

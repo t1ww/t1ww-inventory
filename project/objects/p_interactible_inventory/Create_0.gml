@@ -1,9 +1,9 @@
-/// @description setup
-highlight = false; // highlight when mouse on top
+/// @description p_interactable_inventory Create event
+highlight = false; // Highlight when mouse on top
 // constructor
-this_inventory = market_inventory_create(50,room_height - 300, 10,5,,false)
+this_inventory = instance_create_layer(900,450, "inventory", obj_inventory);
 // init variable
-key_interact = null;
+key_interact = (ord("E"));
 
 /// shader
 handler = shader_get_uniform(shd_outline,"texture_Pixel");

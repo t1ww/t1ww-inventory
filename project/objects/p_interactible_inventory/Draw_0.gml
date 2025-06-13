@@ -1,7 +1,6 @@
-/// @description Insert description here
-// You can write your code in this editor
-draw_set_font(fnt_inv);
-if highlight {
+/// @description Drawing outlines
+draw_set_font(fnt_inv_default);
+if (highlight) {
 	shader_set(shd_outline);
 	var tex=sprite_get_texture(sprite_index,image_index);
 	var tex_w=texture_get_texel_width(tex);

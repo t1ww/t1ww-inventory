@@ -3,7 +3,7 @@
 // Singleton
 if (instance_number(cont_inventory) > 1) {
 	instance_destroy();
-	show_error("duplicated singleton - cont_inventory", true);
+	show_error("Duplicated singleton - cont_inventory", true);
 }
 // Variable to use across the inventories
 	// Hovered inventory
@@ -19,4 +19,4 @@ if (instance_number(cont_inventory) > 1) {
 	dbg_watch(ref_create(self, "focusing_inventory_index"))
 #endregion
 // Create mouse inventory object
-	mouse = instance_create_layer(x,y,layer,obj_inventory_mouse);
+	mouse = instance_create_layer(x,y,"Inventory",obj_inventory_mouse);

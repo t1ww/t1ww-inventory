@@ -1,14 +1,18 @@
 /// @description step -- cont_inventory
 // code here >
-/// CHECKING FOR INVENTORY WITHIN MOUSE POSITION
+/// CHECKING FOR NEAREST CHEST
+
+
+/// CHECKING FOR INVENTORY WITHIN MOUSE POSITION, ONLY IF ACTIVE
 	focusing_inventory = null;
 	focusing_inventory_index = null;
 	with (obj_inventory_base) {
 		/// FINDING THE RIGHT INVENTORY
-		if (other.focusing_inventory == null) 
+		if (cont_inventory.focusing_inventory == null) 
 		&& (mouse_gui_x > x and mouse_gui_x < x + width) 
-		&& (mouse_gui_y > y and mouse_gui_y < y + height){
-			other.focusing_inventory = self;
+		&& (mouse_gui_y > y and mouse_gui_y < y + height)
+		&& (self.active == true){
+			cont_inventory.focusing_inventory = self;
 			break; // using "break" because "return" will exit the code
 		}
 	}
