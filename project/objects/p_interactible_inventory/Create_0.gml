@@ -1,7 +1,7 @@
 /// @description p_interactable_inventory Create event
 highlight = false; // Highlight when mouse on top
 // constructor
-this_inventory = instance_create_layer(900,450, "inventory", obj_inventory);
+this_inventory = instance_create_layer(200,300, "inventory", obj_inventory);
 // init variable
 key_interact = (ord("E"));
 

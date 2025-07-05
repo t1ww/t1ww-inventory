@@ -14,6 +14,7 @@
   "ResourceOrderSettings": [
     {"name":"spr_item_setup","order":2,"path":"sprites/spr_item_setup/spr_item_setup.yy",},
     {"name":"spr_hat","order":1,"path":"sprites/spr_hat/spr_hat.yy",},
+    {"name":"obj_costed_inventory","order":4,"path":"objects/obj_costed_inventory/obj_costed_inventory.yy",},
     {"name":"spr_InvBackground","order":6,"path":"sprites/spr_InvBackground/spr_InvBackground.yy",},
     {"name":"plans","order":2,"path":"notes/plans/plans.yy",},
     {"name":"obj_chest","order":1,"path":"objects/obj_chest/obj_chest.yy",},

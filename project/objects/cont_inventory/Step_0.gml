@@ -1,7 +1,23 @@
 /// @description step -- cont_inventory
 // code here >
 /// CHECKING FOR NEAREST CHEST
-
+if (instance_exists(p_interactible_inventory)) {
+	var _nearest_chest = instance_nearest(mouse_x, mouse_y, p_interactible_inventory);
+	// Check if nearest is too far
+	if (_nearest_chest != null && point_distance(mouse_x, mouse_y, _nearest_chest.x, _nearest_chest.y) > 100) {
+		if (nearest_chest != null) {
+			nearest_chest.highlight = false;
+			nearest_chest = null;
+		}
+	} else {
+		// Nearest is within range
+		if (nearest_chest != _nearest_chest) {
+			if (nearest_chest != null) nearest_chest.highlight = false;
+			nearest_chest = _nearest_chest;
+			if (nearest_chest != null) nearest_chest.highlight = true;
+		}
+	}	
+}
 
 /// CHECKING FOR INVENTORY WITHIN MOUSE POSITION, ONLY IF ACTIVE
 	focusing_inventory = null;

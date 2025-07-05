@@ -14,6 +14,8 @@ if (instance_number(cont_inventory) > 1) {
 	main_inventory = null;
 	// Secondary / Sub (such as chest's)
 	sub_inventroy = null;
+	// Current nearest chest
+	nearest_chest = null;
 #region DEBUG OVERLAY
 	dbg_watch(ref_create(self, "focusing_inventory"))
 	dbg_watch(ref_create(self, "focusing_inventory_index"))
